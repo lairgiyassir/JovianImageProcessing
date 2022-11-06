@@ -17,7 +17,7 @@ export class SearchService {
   sendId(id:ImageId) : Observable<ImageResponse> {
 
     return this.http.post<ImageResponse>(this.baseApiUrl,id).pipe(
-      tap(e => console.log(e.old))
+      tap(e => console.log(e))
     );
   }
 

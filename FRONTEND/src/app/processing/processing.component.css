@@ -74,3 +74,18 @@ p span{
     cursor: pointer;
 }
 
+
+.loader img {
+    height: 100px;
+    width: auto;
+}
+
+.loader_absolue  {
+    position: absolute;
+    z-index: 997;
+    background-color: rgba(255, 255, 255, 0.803);
+    top: 0;
+    bottom : 0;
+    left: 0;
+    right: 0;
+}

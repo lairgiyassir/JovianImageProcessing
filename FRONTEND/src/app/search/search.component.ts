@@ -41,24 +41,25 @@ export class SearchComponent implements OnInit {
     this.btn2  =  document.querySelector('.btn2');
   }
 
-  updateUrl(id: string) {
-    // Appending an ID to a YouTube URL is safe.
-    // Always make sure to construct SafeValue objects as
-    // close as possible to the input data so
-    // that it's easier to check if the value is safe.
-    let list : [string,string,SafeResourceUrl,SafeResourceUrl] ;
+
+  // updateUrl() {
+  //   // Appending an ID to a YouTube URL is safe.
+  //   // Always make sure to construct SafeValue objects as
+  //   // close as possible to the input data so
+  //   // that it's easier to check if the value is safe.
+  //   let list : [SafeResourceUrl,SafeResourceUrl] ;
     
-    this.urlToTrust_old =  this.urlToTrust_old + this.resp_after_processing?.old + "";
-    this.urlToTrust_new =  this.urlToTrust_new + this.resp_after_processing?.new + "";
-    this.trustedUrl_old =
-        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_old.toString());
-    this.trustedUrl_new =
-        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_new.toString());  
-    list = [this.urlToTrust_old,this.urlToTrust_new,this.trustedUrl_old,this.trustedUrl_new];
+  //   this.urlToTrust_old =  this.urlToTrust_old + this.resp_after_processing?.old + "";
+  //   this.urlToTrust_new =  this.urlToTrust_new + this.resp_after_processing?.new + "";
+  //   this.trustedUrl_old =
+  //       this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_old.toString());
+  //   this.trustedUrl_new =
+  //       this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_new.toString());  
+  //   list = [this.trustedUrl_old,this.trustedUrl_new];
      
-    this.sharedService.updateImagesInComponents(list);
+  //   this.sharedService.updateImagesInComponents(list);
     
-  }
+  // }
   // On file Select
 	onChange(event : any) {
 		this.file = event.target.files[0];
@@ -87,7 +88,7 @@ export class SearchComponent implements OnInit {
 					// Short link via api response
 					this.shortLink = event.link;
           this.resp_after_processing = event;
-          this.updateUrl(event.old);
+          this.sharedService.updateUrls(this.resp_after_processing);
           this.router.navigateByUrl('/processing');
           this.loading = false; 
           
@@ -107,7 +108,7 @@ export class SearchComponent implements OnInit {
     this.sendImageIdService.sendId(imageId).subscribe(data => { 
     if (typeof (data) === 'object') {
     this.resp_after_processing = data;
-    this.updateUrl(data.old);
+    this.sharedService.updateUrls(this.resp_after_processing);
     this.router.navigateByUrl('/processing');
     this.loading = false; 
     
