@@ -83,7 +83,32 @@ class ImageProcessor(ImageLoader):
     
     @staticmethod
     def gray_scale(img:np.array):
-        return cv.cvtColor(img, cv.COLOR_RGB2GRAY)    
+        return cv.cvtColor(img, cv.COLOR_RGB2GRAY)
+
+    @staticmethod
+    def processing_pipeline(img : np.array, jsn):
+        list_of_processing = []
+
+        functions = {"enhance_small_scale_clouds": ImageProcessor.enhance_small_scale_clouds,
+        "enhance_large_scale_clouds": ImageProcessor.enhance_large_scale_clouds,
+        "denoising" : ImageProcessor.denoise, 
+        "enhance_contrast" : ImageProcessor.enhance_contrast, 
+        "enhance_brightness": ImageProcessor.enhance_brightness,
+        "gamma_correction" : ImageProcessor.gamma_corrector,
+        "gray_scale" : ImageProcessor.gray_scale,
+        }
+
+        for func in jsn:
+            if jsn[func]:
+                list_of_processing.append(func)
+
+        img_result = functions[list_of_processing[0]](img)
+
+
+        for i in range(1, len(list_of_processing)):
+            img_result = functions[list_of_processing[i]](img_result)
+        return img_result
+    
 
     def enhance_2(self, clipLimit = 10.0, window = 50, denoising = True, sharpen=True):
         sharpen_kernel = np.array([[0, -1, 0],

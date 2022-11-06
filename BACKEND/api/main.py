@@ -63,14 +63,3 @@ def process_img_by_id(img_id : str):
     return {"img_raw": f"{str(parent_path)}/data/raw/{img_id}.png", 
     "img_processed" : f"{str(parent_path)}/data/processed/{img_id}.png"
     }
-
-@app.post("/enhance}")
-def enhance(img_id : str):
-    img_raw = ImageLoader(id = img_id).load()
-    img_processed = ImageProcessor(id = img_id).enhance()
-    cv.imwrite(f"{str(parent_path)}/data/raw/{img_id}.png", img_raw)
-    cv.imwrite(f"{str(parent_path)}/data/processed/{img_id}.png", img_processed)
-    
-    return {"img_raw": f"{str(parent_path)}/data/raw/{img_id}.png", 
-    "img_processed" : f"{str(parent_path)}/data/processed/{img_id}.png"
-    }
