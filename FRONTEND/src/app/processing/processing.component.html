@@ -21,31 +21,31 @@
             <div class=" input_raw d-flex flex-raw justify-content-center align-items-center">
                 <div class="raw mr-3  col-md-4  d-flex flex-column justify-content-center align-items-start">
                     <div>
-                        <input type="checkbox" id="option1" name="option1" [value]="processingOptions[0].value" (change)="processingOptions[0].value = !processingOptions[0].value" >
-                        <label for="brightness">Enhance large scale clouds</label>
+                        <input type="checkbox" id="option1" name="option1" [value]="enhanceParams.enhance_small_scale_clouds" (change)="enhanceParams.enhance_small_scale_clouds = !enhanceParams.enhance_small_scale_clouds" >
+                        <label for="brightness">Enhance small scale clouds</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="option2" name="option2"[value]="processingOptions[1].value" (change)="processingOptions[1].value = !processingOptions[1].value" >
-                        <label for="contrast">Enhance small scale clouds</label>
+                        <input type="checkbox" id="option2" name="option2"[value]="enhanceParams.enhance_large_scale_clouds" (change)="enhanceParams.enhance_large_scale_clouds=!enhanceParams.enhance_large_scale_clouds" >
+                        <label for="contrast">Enhance large scale clouds</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="option3" name="option3"[value]="processingOptions[2].value" (change)="processingOptions[2].value = !processingOptions[2].value" >
+                        <input type="checkbox" id="option3" name="option3"[value]="enhanceParams.denoising" (change)="enhanceParams.denoising=!enhanceParams.denoising" >
                         <label for="brightness">Denoise</label>
                     </div>
                   
                 </div>
                 <div class="raw  col-md-4">
                     <div>
-                        <input type="checkbox" id="option4" name="option4"[value]="processingOptions[3].value" (change)="processingOptions[3].value = !processingOptions[3].value" >
+                        <input type="checkbox" id="option4" name="option4"[value]="enhanceParams.gamma_correction" (change)="enhanceParams.gamma_correction=!enhanceParams.gamma_correction" >
                         <label for="brightness">Gamma correction</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="option5" name="option5"[value]="processingOptions[4].value" (change)="processingOptions[4].value = !processingOptions[4].value" >
+                        <input type="checkbox" id="option5" name="option5"[value]="enhanceParams.enhance_brightness" (change)="enhanceParams.enhance_brightness= !enhanceParams.enhance_brightness" >
                         <label for="contrast">Enhance brightness</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="option6" name="option6" [value]="processingOptions[5].value" (change)="processingOptions[5].value = !processingOptions[5].value">
-                        <label for="contrast">Enhance contrast</label>
+                        <input type="checkbox" id="option6" name="option6" [value]="enhanceParams.gray_scale" (change)="enhanceParams.gray_scale=!enhanceParams.gray_scale">
+                        <label for="contrast">Gray scale </label>
                     </div>
                  
                 </div>

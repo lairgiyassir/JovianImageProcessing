@@ -3,6 +3,7 @@ import { Form, NgForm } from '@angular/forms';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { ParentService } from '../services/parent.service';
 import { ProcessFormService } from '../services/process-form.service';
+import { EnhanceParams } from '../shared/enhance-params';
 import { ImageResponse } from '../shared/image-response';
 
 @Component({
@@ -12,14 +13,11 @@ import { ImageResponse } from '../shared/image-response';
 })
 export class ProcessingComponent implements OnInit {
 
-  processingOptions: Array<any> = [
-    { name: 'enhance_large_scale_clouds', value: false },
-    { name: 'enhance_small_scale_clouds', value: false },
-    { name: 'denoise', value: false },
-    { name: 'gama_correction', value: false },
-    { name: 'enhance_brightness', value: false },
-    { name: 'enhance_contrast', value: false }
-  ];
+
+  
+  enhanceParams : EnhanceParams | undefined ;
+  
+  
 
    resp_after_processing : ImageResponse | undefined;
    list : any;
@@ -34,6 +32,16 @@ export class ProcessingComponent implements OnInit {
 
   
   ngOnInit(): void {
+    this.enhanceParams = {
+
+        "enhance_small_scale_clouds": false, 
+        "enhance_large_scale_clouds":  false,
+        "denoising" : false ,
+        "enhance_brightness" : false ,
+        "gamma_correction" : false ,
+        "gray_scale" : false
+
+    };
     this.setProcessImgProperties();
   }
 
@@ -46,8 +54,11 @@ export class ProcessingComponent implements OnInit {
 
   onSubmit() {
     this.loadingProcess = !this.loadingProcess;
-   
-     this.processingService.regenerate(this.processingOptions).subscribe(data => { 
+    let processingOptions: Array<any> = [
+      {"url" : this.process_old},
+      {"params": this.enhanceParams}
+    ];
+     this.processingService.regenerate(processingOptions).subscribe(data => { 
      if (typeof (data) === 'object') {
      this.resp_after_processing = data;
      this.sharedService.updateUrls(this.resp_after_processing);
