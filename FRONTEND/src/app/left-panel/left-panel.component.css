@@ -12,7 +12,7 @@
 
 }
 
-.buttons button{
+.buttons button {
     outline: none;
     border: 0;
     padding: 1rem;
@@ -40,4 +40,38 @@
     height: 20px !important;
     color: #fff;
     font-size: 1rem;
+}
+
+
+.buttons-above button {
+    outline: none;
+    border: 0;
+    padding: .4rem .8rem;
+    background-color:transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+   
+    border-radius: 4rem;
+}
+.buttons-above button:hover {
+    background-color: #fff;
+    transition: .3s ease-in-out all;
+}
+.buttons-above button:hover i {
+    
+    color: rgb(89, 8, 42);
+    
+}
+.buttons-above button i   {
+    font-weight: 800;
+    font-size: 1.2rem;
+   
+}
+
+.buttons-above {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+
 }
