@@ -1,13 +1,9 @@
-from tkinter import Image
-from typing import Union
 import cv2 as cv
 from fastapi import FastAPI, UploadFile, File
 import pathlib
 import os
 import sys
 from fastapi.middleware.cors import CORSMiddleware
-import numpy as np 
-from PIL import Image
 
 parent_path = pathlib.Path(os.path.realpath(__file__)).parent.parent
 sys.path.append(str(parent_path))

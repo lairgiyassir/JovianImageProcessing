@@ -102,8 +102,10 @@ class ImageProcessor(ImageLoader):
             if jsn[func]:
                 list_of_processing.append(func)
 
-        img_result = functions[list_of_processing[0]](img)
+        if len(list_of_processing) == 0:
+            return ImageProcessor.enhance_static(img)
 
+        img_result = functions[list_of_processing[0]](img)
 
         for i in range(1, len(list_of_processing)):
             img_result = functions[list_of_processing[i]](img_result)
