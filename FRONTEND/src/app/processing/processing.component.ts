@@ -48,14 +48,14 @@ export class ProcessingComponent implements OnInit {
   setProcessImgProperties() {
 
     this.list = this.sharedService.getImagesTrustedLinks();
-    this.process_old = this.list[0];
-    this.process_new = this.list[1];
+    this.process_old = this.list[2];
+    this.process_new = this.list[3];
   }
 
   onSubmit() {
     this.loadingProcess = !this.loadingProcess;
     let processingOptions: Array<any> = [
-      {"url" : this.process_old},
+      {"url" : this.list[0]},
       {"params": this.enhanceParams}
     ];
      this.processingService.regenerate(processingOptions).subscribe(data => { 
