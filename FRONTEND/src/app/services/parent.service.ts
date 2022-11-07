@@ -15,21 +15,21 @@ export class ParentService {
 
 
   updateUrls(resp_after_processing : ImageResponse | undefined) {
-    let trustedLinks : [string,string,SafeResourceUrl,SafeResourceUrl] ;
+    let trustedLinks : [string | undefined,string,SafeResourceUrl,SafeResourceUrl] ;
    
     let urlToTrust_old_tmp =  this.urlToTrust_old + resp_after_processing?.old + "";
     let urlToTrust_new_tmp =  this.urlToTrust_new + resp_after_processing?.new + "";
-
+    
     let trustedUrl_old =
         this.sanitizer.bypassSecurityTrustResourceUrl(urlToTrust_old_tmp.toString());
    let trustedUrl_new =
         this.sanitizer.bypassSecurityTrustResourceUrl(urlToTrust_new_tmp.toString());  
-        trustedLinks= [urlToTrust_old_tmp,urlToTrust_new_tmp,trustedUrl_old,trustedUrl_new];
+        trustedLinks= [resp_after_processing?.old,urlToTrust_new_tmp,trustedUrl_old,trustedUrl_new];
     this.updateImagesInComponents(trustedLinks);
      
   }
 
-  updateImagesInComponents(list :  [string,string,SafeResourceUrl,SafeResourceUrl]) {
+  updateImagesInComponents(list :  [string | undefined,string,SafeResourceUrl,SafeResourceUrl]) {
       this.list = list;
   } 
 
