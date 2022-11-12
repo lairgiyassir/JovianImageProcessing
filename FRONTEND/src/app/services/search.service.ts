@@ -9,7 +9,7 @@ import { ImageResponse } from '../shared/image-response';
 })
 export class SearchService {
 
-  baseApiUrl = "http://localhost:8000/process"
+  baseApiUrl = "https://jip-backend.onrender.com/process"
 
   constructor(private http : HttpClient) { }
 
