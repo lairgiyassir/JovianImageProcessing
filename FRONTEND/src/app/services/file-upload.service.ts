@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class FileUploadService {
 	
 // API url
-baseApiUrl = "https://jip-backend.onrender.com//files"
+baseApiUrl = "https://jip-backend.onrender.com/files"
 	
 constructor(private http:HttpClient) { }
 
