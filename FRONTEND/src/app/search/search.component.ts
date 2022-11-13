@@ -23,8 +23,13 @@ export class SearchComponent implements OnInit {
   resp_after_processing : ImageResponse | undefined ;
   trustedUrl_old:any;
   trustedUrl_new:any;
-  urlToTrust_old = "../../assets/imgs/";
-  urlToTrust_new = "../../assets/processed_imgs/";
+  // urlToTrust_old = "../../assets/imgs/";
+  // urlToTrust_new = "../../assets/processed_imgs/";
+
+  urlToTrust_old = "data:image/png;base64, ";
+  urlToTrust_new = "data:image/png;base64, ";
+
+
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
 	file : any;// Variable to store file
@@ -114,6 +119,14 @@ export class SearchComponent implements OnInit {
     
   
   }});
+
+  // this.resp_after_processing = this.sendImageIdService.sendTest();
+   
+  //   this.sharedService.updateUrls(this.resp_after_processing);
+  //   this.router.navigateByUrl('/processing');
+  //   this.loading = false; 
+    
+  
 
      
 

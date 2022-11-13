@@ -8,8 +8,12 @@ import { BrowserModule, DomSanitizer, SafeResourceUrl } from '@angular/platform-
 export class ParentService {
 
    list : any;
-  urlToTrust_old = "../../assets/imgs/";
-  urlToTrust_new = "../../assets/processed_imgs/";
+  // urlToTrust_old = "../../assets/imgs/";
+  // urlToTrust_new = "../../assets/processed_imgs/";
+
+  urlToTrust_old = "data:image/png;base64, ";
+  urlToTrust_new = "data:image/png;base64, ";
+
 
   constructor(private sanitizer: DomSanitizer) { }
 
